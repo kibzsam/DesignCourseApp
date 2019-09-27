@@ -13,6 +13,7 @@ import {NotificationIcon} from './components/Icons';
 import Card from './components/Card';
 import Logo from './components/Logo';
 import Course from './components/Course';
+import Menu from './components/Menu';
 
 /*import {
   Header,
@@ -26,12 +27,13 @@ export default class App extends React.Component {
   render() {
     return (
       <Container>
+        <Menu />
         <SafeAreaView>
           <ScrollView style={{height: '100%'}}>
             <TitleBar>
               <Avatar source={require('./assets/avatar.jpg')} />
               <Title>Welcome Back</Title>
-              <Name>Meng</Name>
+              <Name>Sam Kibocha</Name>
               <NotificationIcon
                 style={{position: 'absolute', right: 20, top: 5}}
               />
@@ -186,7 +188,7 @@ const courses = [
   {
     title: 'Prototype in InvisionStudio',
     subtitle: '10sections',
-    image: require('./assets/background13.jpg'),
+    image: require('./assets/background11.jpg'),
     logo: require('./assets/logo-studio.png'),
     author: 'Kibocha',
     avatar: require('./assets/avatar.jpg'),
@@ -195,7 +197,7 @@ const courses = [
   {
     title: 'React for Designers',
     subtitle: '12 sections',
-    image: require('./assets/background13.jpg'),
+    image: require('./assets/background12.jpg'),
     logo: require('./assets/logo-react.png'),
     author: 'Henry',
     avatar: require('./assets/avatar.jpg'),
@@ -213,7 +215,7 @@ const courses = [
   {
     title: 'Design System in Figma',
     subtitle: '10 sections',
-    image: require('./assets/background13.jpg'),
+    image: require('./assets/background14.jpg'),
     logo: require('./assets/logo-figma.png'),
     author: 'Pineapples',
     avatar: require('./assets/avatar.jpg'),

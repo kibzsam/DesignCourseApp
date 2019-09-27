@@ -56,7 +56,7 @@ const Container = styled.View`
   border-radius: 14px;
   margin-left: 20px;
   margin-top: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 `;
 
 const Cover = styled.View`
