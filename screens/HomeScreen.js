@@ -21,6 +21,7 @@ import Card from '../components/Card';
 import Logo from '../components/Logo';
 import Course from '../components/Course';
 import Menu from '../components/Menu';
+import Avatar from '../components/Avatar';
 import {connect} from 'react-redux';
 /*import {
   Header,
@@ -30,7 +31,7 @@ import {connect} from 'react-redux';
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';*/
 function mapStateToProps(state) {
-  return {action: state.action};
+  return {action: state.action, name: state.name};
 }
 function mapDispatchToProps(dispatch) {
   return {openMenu: () => dispatch({type: 'OPEN_MENU'})};
@@ -91,10 +92,10 @@ class HomeScreen extends React.Component {
                 <TouchableOpacity
                   onPress={this.props.openMenu}
                   style={{position: 'absolute', top: 0, left: 20}}>
-                  <Avatar source={require('../assets/avatar.jpg')} />
+                  <Avatar />
                 </TouchableOpacity>
                 <Title>Welcome Back</Title>
-                <Name>Sam Kibocha</Name>
+                <Name>{this.props.name}</Name>
                 <NotificationIcon
                   style={{position: 'absolute', right: 20, top: 5}}
                 />
@@ -165,16 +166,7 @@ const Container = styled.View`
   border-radius: 10px;
 `;
 const AnimatedContainer = Animated.createAnimatedComponent(Container);
-const Avatar = styled.Image`
-  width: 44px;
-  height: 44px;
-  background: black;
-  border-radius: 22px;
-  /*margin-left: 20px;
-  position: absolute;
-  top: 0;
-  left: 0;*/
-`;
+
 const TitleBar = styled.View`
   width: 100%;
   margin-top: 50px;
