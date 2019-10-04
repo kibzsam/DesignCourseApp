@@ -29,6 +29,8 @@ target 'designcodeApp' do
 
   pod 'RCTRestart', :path => '../node_modules/react-native-restart'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'designcodeAppTests' do
     inherit! :search_paths
     # Pods for testing

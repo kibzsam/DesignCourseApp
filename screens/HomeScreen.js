@@ -30,14 +30,18 @@ import {connect} from 'react-redux';
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';*/
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {action: state.action, name: state.name};
 }
+
 function mapDispatchToProps(dispatch) {
   return {openMenu: () => dispatch({type: 'OPEN_MENU'})};
 }
 
 class HomeScreen extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
   state = {
     scale: new Animated.Value(1),
     opacity: new Animated.Value(1),
@@ -48,7 +52,7 @@ class HomeScreen extends React.Component {
   }
 
   toggleMenu = () => {
-    if (this.props.action == 'openMenu') {
+    if (this.props.action === 'openMenu') {
       Animated.parallel([
         Animated.timing(this.state.scale, {
           toValue: 0.9,
@@ -62,7 +66,7 @@ class HomeScreen extends React.Component {
       ]).start();
       StatusBar.setBarStyle('light-content', true);
     }
-    if (this.props.action == 'closeMenu') {
+    if (this.props.action === 'closeMenu') {
       Animated.parallel([
         Animated.timing(this.state.scale, {
           toValue: 1,
@@ -120,14 +124,21 @@ class HomeScreen extends React.Component {
                 style={{paddingBottom: 30}}
                 showsHorizontalScrollIndicator={false}>
                 {cards.map((card, index) => (
-                  <Card
+                  <TouchableOpacity
                     key={index}
-                    title={card.title}
-                    image={card.image}
-                    caption={card.caption}
-                    subtitle={card.subtitle}
-                    logo={card.logo}
-                  />
+                    onPress={() =>
+                      this.props.navigation.navigate('Section', {
+                        section: card,
+                      })
+                    }>
+                    <Card
+                      title={card.title}
+                      image={card.image}
+                      caption={card.caption}
+                      subtitle={card.subtitle}
+                      logo={card.logo}
+                    />
+                  </TouchableOpacity>
                 ))}
               </ScrollView>
               <Subtitle>Popular Course</Subtitle>
@@ -163,7 +174,8 @@ const RootView = styled.View`
 const Container = styled.View`
   background-color: #f0f3f5;
   flex: 1;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 const AnimatedContainer = Animated.createAnimatedComponent(Container);
 
@@ -218,24 +230,26 @@ const logos = [
   },
 ];
 
+const assetBase = '../assets/';
+
 const cards = [
   {
     title: 'React Native for Beginners',
-    image: require('../assets/background11.jpg'),
+    image: require(`${assetBase}background11.jpg`),
     subtitle: 'React Native',
     caption: '1 of 12 sections',
     logo: require('../assets/logo-react.png'),
   },
   {
     title: 'Styled Components',
-    image: require('../assets/background12.jpg'),
+    image: require(`${assetBase}background12.jpg`),
     subtitle: 'React Native',
     caption: '2 of 12 sections',
     logo: require('../assets/logo-react.png'),
   },
   {
     title: 'Props Icons',
-    image: require('../assets/background13.jpg'),
+    image: require(`${assetBase}background13.jpg`),
     subtitle: 'React Native',
     caption: '3 of 12 sections',
     logo: require('../assets/logo-react.png'),
